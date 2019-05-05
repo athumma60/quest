@@ -1,0 +1,26 @@
+<!-- Creates the navbar which is laoded onto every page on the website and contains navigational links to help users move around -->
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <% @user == current_user %>
+    <div class="container">
+        
+        <nav>
+          <ul class="nav navbar-nav">
+            <%= link_to(image_tag("Glass"), root_path, class: "pull-left") %>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            
+          	<% if user_signed_in? %>          
+              <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to "Edit Account", edit_user_path(current_user) %></li>
+              <li><%= link_to "My Information", user_path(current_user) %></li>
+              <% if current_user.is_admin? %>
+                <li><%= link_to "Admin Panel", admin_panel_path %></li>
+              <% end %>
+            <% else %>
+              <li><%= link_to "Log In", new_user_session_path %></li>
+              <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+    </div>
+</header>

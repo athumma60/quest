@@ -1,0 +1,76 @@
+<!-- Creates a view of each users information -->
+<% provide(:title, 'Show User') %>
+<% if @user.name? %>
+  <h1>You are viewing <%= @user.name %>'s information.</h1>
+<% else %>
+  <h1>You are viewing <%= @user.email %>'s information.</h1>
+<% end %>
+<div class="col-md-6 col-md-offset-3">
+  <div class="row">
+  	<h4>Email: <%= @user.email %></h4>
+  	<h4>Name: <%= @user.name %></h4>
+
+  	<h4>Total User Score: <%= @user.score %></h4>  	
+  </div>
+</div>
+
+<div class ="col-md-12">
+	<hr>
+	<!-- Determines if a user is in the top 3 places and if they are it displays the proper place badge -->
+	<% if @user == @firstplace %>
+	  <div class="row">
+	  	<%= image_tag('1place') %><i>This user is the top player on the leaderboard!</i>
+	  </div>
+	<% elsif @user == @secondplace %>
+	  <div class="row">
+	  	<%= image_tag('2place') %><i>This user is in second place player on the leaderboard!</i>
+	  </div>
+	<% elsif @user == @thirdplace %>
+	  <div class="row">
+	  	<%= image_tag('3place') %><i>This user is in third place on the leaderboard!</i>
+	  </div>
+	<% end %>
+ <div class="col-md-4 pull-left">
+ 	<!-- Displays score badges if that badges criteria are met -->
+ 	<h4>Score Specific Badges:</h4> <br>
+ 	<%= image_tag('perfectscore') %><i> This user has scored <%= @user.perfect_scores %> perfect score(s)!</i> <br>
+ 	<% if @user.score >= 25 %>
+ 	  <%= image_tag('25score') %><i>This user has a score of 25 or higher!</i><br>
+ 	  <% if @user.score >= 50 %>
+ 	  <%= image_tag('50score') %><i>This user has a score of 50 or higher!</i><br>
+ 	  <% if @user.score >= 100 %>
+ 	  <%= image_tag('100score') %><i>This user has a score of 100 or higher and is able to prestige!</i><br>
+ 	<% end %>
+ 	<% end %>
+ 	<% end %>
+ </div>
+ <div class="col-md-4">
+ 	<!-- Displays quiz badges if that badges criteria are met -->
+ 	<h4>Quiz Specific Badges:</h4> <br>
+ 	<% if @user.quizzes_taken > 0 %>
+ 	  <%= image_tag('1quiz') %><i>This user has taken 1 quiz!</i><br>
+ 	<% end %>
+ 	<% if @user.quizzes_taken >= 5 %>
+ 	  <%= image_tag('5quiz') %><i>This user has taken 5 quizzes!</i><br>
+ 	<% end %>
+ 	<% if @user.quizzes_taken >= 25 %>
+ 	  <%= image_tag('25quiz') %><i>This user has taken 25 quizzes!</i><br>
+ 	<% end %>
+ </div>
+ <div class="col-md-4 pull-right">
+ 	<h4>Prestige: </h4><i>When a user has above one hundred points they have the option to subtract 100 points from their score to earn a unique badge. A user can prestige three times.</i><br><br>
+ 	<!-- Displays prestige badges if the user had any prestige levels -->
+ 	<% if @user.score > 100 %>
+ 	  <%= link_to "Prestige", edit_user_path(current_user), class: "btn btn-main" %><br>
+ 	<% end %>
+ 	<% if @user.prestige >= 1 %>
+ 	  <%= image_tag('prestige1') %><i>This user has prestiged one time!</i><br>
+ 	<% end %>
+ 	<% if @user.prestige >= 2 %>
+ 	  <%= image_tag('prestige2') %><i>This user has prestiged two times!</i><br>
+ 	<% end %>
+ 	<% if @user.prestige >= 3 %>
+ 	  <%= image_tag('prestige3') %><i>This user has prestiged three times!</i><br>
+ 	<% end %>
+ </div>
+</div>

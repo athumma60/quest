@@ -1,0 +1,69 @@
+<!-- Creates a view for quizzes in the admin panel -->
+ <% provide(:title, 'Quizzes') %>
+<div class="row">
+  <h3>Quiz Information</h3>
+
+  </div>
+
+  <div class="col-md-2">
+      <div class="panel panel-default">
+      <div class="panel-heading">
+        Admin Panel Links:
+      </div>
+      <div class="panel-body"></div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item">-<%= link_to "Admin Panel Overview", admin_panel_path, class: "sidebar-link" %></li>
+          <li class="sidebar-item">-<%= link_to "User Information", admin_panel_users_path, class: "sidebar-link" %></li>
+          <li class="sidebar-item">-<%= link_to "Quizzes", admin_panel_quizzes_path, class: "sidebar-link active" %></li>
+          <li class="sidebar-item">-<%= link_to "Logs",admin_panel_logs_path, class: "sidebar-link" %></li>
+        </ul>
+      </div>
+    </div>  
+
+  <div class="col-md-10">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <!-- Creates a search form that searches the database for quizzes with matching names -->
+        Search For Quizzes:
+        <%= link_to "Create New Quiz", new_quiz_path, class: "btn btn-main pull-right" %>
+      </div>
+      <div class="panel-body">
+        <div class="col-md-5">
+         <%= search_form_for @q, url: admin_panel_quizzes_path do |f| %>
+          <%= f.label :name_cont %>
+          <%= f.search_field :name_cont %>
+
+          <%= f.submit "Search", class: "btn btn-main btn-sm" %>
+         <% end %>
+         <hr>
+        </div>
+      </div>
+      <div class="panel-body">
+        <!-- Displays all quizzes until the search function is used. At that point it displays matching quizzes if there are any. -->
+          <% @arrResults.each do |quiz|%>
+           <div class="row">
+            <div class="col-md-4 pull-left">
+              <h4><%= quiz.name  %></h4> 
+            </div>   
+            <div class="col-md-4 pull-right">
+              <div class="row-space-2">
+                <!-- Creates a button to delete quiz -->
+              <%= button_to "Delete Quiz", quiz_path(quiz), data: { confirm: "Delete Quiz?" }, method: :delete, class: "btn btn-main" %>
+              </div><br>
+              <div class="row-space-2">
+                <!-- Creates a button to update quiz information -->
+                <%= link_to "Update Quiz", edit_quiz_path(quiz), class: "btn btn-main btn-block" %>
+              </div><br>
+            </div>
+            <hr>
+           </div>
+          <% end %>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+

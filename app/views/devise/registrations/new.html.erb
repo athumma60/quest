@@ -1,0 +1,37 @@
+<!-- Creates a form for users to sign up for the website -->
+<% provide(:title, 'Sign up') %>
+<h3>Sign up</h3>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+
+    
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+    
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+
+   
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+
+      <%= f.submit "Sign up", class: "btn btn-main" %>
+      
+  <% end %>
+  </div>
+</div>
+<br />
+<div class="row">
+   <div class="col-md-6 col-md-offset-3">
+    <%= button_to "Log In", new_user_session_path, class: "btn btn-main" %>
+   </div>
+  </div>

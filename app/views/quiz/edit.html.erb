@@ -1,0 +1,78 @@
+<!-- Creates a view for editting the information of a quiz -->
+<% provide(:title, 'Edit Quiz') %>
+<h1>You are creating/editing a quiz.</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @quiz, html:{ method: :put} do |f| %>
+      <%= f.label :name %>
+      <%= text_field_tag("name") %>
+<!-- All of these fields allow data to be taken from the view and get sent to the controller to be updated -->
+
+      <%= f.label :question1 %>
+      <%= text_field_tag("question1") %>
+      <%= f.label :answer %>
+      <%= text_field_tag("answer1") %>
+      <%= f.label :distractor1 %>
+      <%= text_field_tag("distract11") %>
+      <%= f.label :distractor2 %>
+      <%= text_field_tag("distract12") %>
+      <%= f.label :distractor3 %>
+      <%= text_field_tag("distract13") %>
+
+      <hr>
+
+      <%= f.label :question2 %>
+      <%= text_field_tag("question2") %>
+      <%= f.label :answer %>
+      <%= text_field_tag("answer2") %>
+      <%= f.label :distractor1 %>
+      <%= text_field_tag("distract21") %>
+      <%= f.label :distractor2 %>
+      <%= text_field_tag("distract22") %>
+      <%= f.label :distractor3 %>
+      <%= text_field_tag("distract23") %>
+
+      <hr>
+
+      <%= f.label :question3 %>
+      <%= text_field_tag("question3") %>
+      <%= f.label :answer %>
+      <%= text_field_tag("answer3") %>
+      <%= f.label :distractor1 %>
+      <%= text_field_tag("distract31") %>
+      <%= f.label :distractor2 %>
+      <%= text_field_tag("distract32") %>
+      <%= f.label :distractor3 %>
+      <%= text_field_tag("distract33") %>
+
+      <hr>
+
+      <%= f.label :question4 %>
+      <%= text_field_tag("question4") %>
+      <%= f.label :answer %>
+      <%= text_field_tag("answer4") %>
+      <%= f.label :distractor1 %>
+      <%= text_field_tag("distract41") %>
+      <%= f.label :distractor2 %>
+      <%= text_field_tag("distract42") %>
+      <%= f.label :distractor3 %>
+      <%= text_field_tag("distract43") %>
+
+      <hr>
+
+      <%= f.label :question5 %>
+      <%= text_field_tag("question5") %>
+      <%= f.label :answer %>
+      <%= text_field_tag("answer5") %>
+      <%= f.label :distractor1 %>
+      <%= text_field_tag("distract51") %>
+      <%= f.label :distractor2 %>
+      <%= text_field_tag("distract52") %>
+      <%= f.label :distractor3 %>
+      <%= text_field_tag("distract53") %>
+
+      <%= f.submit "Submit", class: "btn btn-main" %>
+    <% end %>
+</div>
+</div>

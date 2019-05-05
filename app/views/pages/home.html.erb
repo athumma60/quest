@@ -1,0 +1,34 @@
+<!-- Creates the view of the home page -->
+<% provide(:title, 'Home') %>
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= full_title(yield(:title)) %></title>
+</head>
+  <div class="row">
+  	<div class="col-md-1 col-md-offset-4">
+<!-- Pulls the applications logo onto the home page -->
+      <%= image_tag("logo1") %>
+  	</div> 	
+  </div>
+
+<body>
+  <div class="center jumbotron">
+  <h1>Welcome to Quest!</h1>
+
+  <h2>
+    Here at Quest, you have the opportunity to take quizzes on information in various STEM fields. Through taking these
+    quizzes you will have the opportunity to earn badges and compete with other users for first place on the leaderboard! What are you waiting for? Sign up and start your journey today!
+  </h2>
+
+  <%= link_to "View Quizzes", quiz_index_path, class: "btn btn-main btn-lg" %> <br> <br>
+  <%= link_to "Leaderboard", users_path, class: "btn btn-main btn-lg" %>
+  
+
+</div>
+  
+</div>
+</div>
+</body>
+  <%= render 'shared/footer' %>
+</html>

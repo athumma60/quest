@@ -1,0 +1,26 @@
+<!-- Creates a form for the user index page -->
+<% provide(:title, 'Users') %>
+  <h3>Complete LeaderBoard</h3>
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+  	  <div class="panel-heading">
+  	  Users
+  	  </div>
+      <div class="panel-body">
+        <!-- Cretaes a row for each user that displays basic user information and allows a user to go see more in depth details on the show view -->
+        <% @allusers.each do |user| %>
+         <div class="row">
+            <% if user.name? %>
+              <h4>User: <%= user.name %></h4>
+            <% else %>
+              <h4>User: <%= user.email %></h4>
+            <% end %>
+            <h4>Score: <%= user.score %></h4>
+            <h4>Quizzes Taken: <%= user.quizzes_taken %></h4>
+            <%= link_to "Show User", user_path(user), class: "btn btn-main" %>
+          <hr>
+         </div>
+        <% end %>
+      </div>
+    </div>
+  </div>

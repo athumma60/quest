@@ -1,0 +1,62 @@
+<!-- Creates a form for showing all quizzes in the database to users -->
+<% provide(:title, 'Quizzes') %>
+<div class="row">
+  <h3>Quizzes</h3>
+  <% if current_user.is_admin? %>
+    <h3>Admins If you take a quiz you will wipe it! Please test quizzes on non-admin accounts</h3>
+  <% end %>
+  <div class="col-md-4">
+  	  <div class="panel panel-default">
+  	    <div class="panel-heading">
+  	      LeaderBoard:
+  	    </div>
+  	  <div class="panel-body">
+  	    <ul class="sidebar-list">
+          <!-- Displays a mini leaderboard that shows the top 5 users -->
+          <% @topusers.each do |user| %>
+            <% if user.name? %>
+            <li class="sidebar-item">-<%= user.name %> <%= user.score %></li>
+            <% else %>
+            <li class="sidebar-item">-<%= user.email %> <%= user.score %></li>
+            <% end %>
+          <% end %>
+        </ul>
+  	  </div>
+  	</div>
+
+  </div>
+  <div class="col-md-7">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+       <!-- Creates a search form for quizzes by name -->
+        Search For Quizzes:
+      </div>
+      <div class="panel-body">
+        <div class="col-md-5">
+         <%= search_form_for @q, url: quiz_index_path do |f| %>
+          <%= f.label :name_cont %>
+          <%= f.search_field :name_cont %>
+
+          <%= f.submit "Search", class: "btn btn-main btn-sm" %>
+         <% end %>
+         <hr>
+        </div>
+      </div>
+      <div class="panel-body">
+        <!-- Displays quizzes matching the name that was searched -->
+          <% @arrResults.each do |quiz|%>
+           <div class="row">
+            <h4><%= quiz.name  %></h4> 
+            <div class="col-md-5"><%= link_to "Take Quiz", quiz_path(quiz), class: "btn btn-main" %></div>
+            <hr>
+           </div>
+          <% end %>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+

@@ -1,0 +1,77 @@
+<!-- Creates a view for admin panel users -->
+<% provide(:title, 'Admin Panel') %>
+<div class="row">
+  <h3>User Information</h3>
+    <div class="col-md-2">
+      <div class="panel panel-default">
+  	  <div class="panel-heading">
+  	    Admin Panel Links:
+  	  </div>
+  	  <div class="panel-body"></div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item">-<%= link_to "Admin Panel Overview", admin_panel_path, class: "sidebar-link" %></li>
+          <li class="sidebar-item">-<%= link_to "User Information", admin_panel_users_path, class: "sidebar-link active" %></li>
+          <li class="sidebar-item">-<%= link_to "Quizzes", admin_panel_quizzes_path, class: "sidebar-link" %></li>
+          <li class="sidebar-item">-<%= link_to "Logs",admin_panel_logs_path, class: "sidebar-link" %></li>
+        </ul>
+      </div>
+    </div>  
+  
+  <div class="col-md-10">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <!-- Creates a search form for users by email -->
+        Search For Users:
+        <%= link_to "Create New User", new_user_path, class: "btn btn-main pull-right" %>
+      </div>
+      <div class="panel-body">
+      <div class="col-md-5">
+         <%= search_form_for @q, url: admin_panel_users_path do |f| %>
+          <%= f.label :email_cont %>
+          <%= f.search_field :email_cont %>
+
+          <%= f.submit "Search", class: "btn btn-main btn-sm" %>
+         <% end %>
+         <hr>
+        </div>
+        </div>
+        <div class="panel-body">
+          <!-- All users are displayed until the search function is used then matching users are displayed -->
+          <% @userResults.each do |user|%>
+           <div class="row">
+            <div class="col-md-4 pull-left">
+              <h4>Email: <%= user.email %></h4>
+              <h4>Updated At: <%= user.updated_at %></h4>
+            </div>
+
+            <div class="col-md-4">
+              <h4>Last IP: <%= user.last_sign_in_ip %></h4>
+              <% if user.is_admin? %>
+                <h4>Admin</h4>
+              <% end %>
+            </div>
+            
+            <div class="col-md-4 pull-right">
+              <!-- Creates a button to delete a user -->
+             <div class="row-space-2">
+              <%= button_to "Delete User", user_path(user), data: { confirm: "Delete User?" }, method: :delete, class: "btn btn-main" %>
+             </div>
+            <br>
+             <div class="row-space-2">
+              <!-- Creates a button to edit user information -->
+              <%= link_to "Edit User", edit_user_path(user), class: "btn btn-main btn-block" %>
+             </div><br>
+            <div class="row-space-2">
+              <!-- Creates a button to view user information and badges -->
+              <%= link_to "View User", user_path(user), class: "btn btn-main btn-block" %>
+            </div>
+            <br>
+            </div>
+            <hr>
+           </div>
+          <% end %>
+        </div>
+      
+    </div>
+  </div>
+</div>

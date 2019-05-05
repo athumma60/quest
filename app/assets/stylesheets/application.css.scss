@@ -1,0 +1,280 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+
+ Defines all design elements called in the project
+
+ *= require_tree .
+ *= require_self
+ *= require 'pages'
+ *= require 'admin'
+ */
+@import "bootstrap";
+@import "bootstrap-sprockets";
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+navbar {
+  color: #F62939;
+  background-color: #212121;
+  border: none;
+  padding: 0 px;
+  height: 78px;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+
+h3 {
+  font-size: 2.5em;
+  text-align: center;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #F62939;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  padding-bottom: -15px;
+}
+
+#logo:hover {
+  color: #F62939;
+  text-decoration: none;
+}
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+}
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 15px;
+}
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+aside {
+  section.user_info {
+    margin-top: 20px;
+  }
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+    }
+  }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
+}
+
+.btn-main { 
+  color: #F62939; 
+  background-color: #212121; 
+  border: none;
+} 
+
+.btn-main:hover {
+  color: #ffffff;
+  background-color: #212121;
+  border: none;
+}
+
+.btn-main:active {
+  color: #ffffff;
+  background-color: #212121;
+  border: none;
+}
+
+.navbar-nav {
+  color: #F62939;
+  background-color: #212121;
+  border: none; 
+  padding: none;
+}
+
+.navbar-right {
+  color: #F62939;
+  background-color: #212121; 
+  border: none;
+  padding: none;
+}
+
+.navbar-fixed-top {
+  color: #F62939;
+  background-color: #212121; 
+  border: none;
+  padding: none;
+  height: 78px;
+}
+
+.navbar-inverse {
+  color: #F62939;
+  background-color: #212121;
+  border: none; 
+  padding: none;
+}
+
+
+
+.sidebar-list {
+  padding-left: 1 px;
+  list-style: none;
+}
+
+.sidebar-item {
+  padding: 10 px 0;
+  font-size: 16 px;
+  color: #212121;
+  border-bottom: 5 px solid #212121;
+}
+
+.sidebar-link {
+  color: #212121;
+  text-decoration: none;
+}
+
+.sidebar-link:hover, .sidebar-link:active {
+  color: #F62939;
+  font-weight: bold; 
+  text-decoration: none;
+}
+
+.panel-default, .panel-heading {
+  color: #212121;
+  background-color: #FFF;
+  font-size: 18 px;
+  font-weight: 400;
+}
+

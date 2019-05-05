@@ -1,0 +1,27 @@
+<!-- Creates a view for editing user information and sending it to the controller to be updated in the database -->
+<% provide(:title, 'Edit User') %>
+<% if @user.name? %>
+<h1>You are editing <%= @user.name %>'s account.</h1>
+<% else %>
+<h1>You are editing <%= @user.email %>'s account.</h1>
+<% end %>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  	<%= form_for @user, html: { method: :put } do |f| %>
+  	  <%= f.label :email %> <i>(leave blank if you don't want to change it)</i>
+  	  <%= text_field_tag("email") %>
+
+  	  <%= f.label :name %> <i>(leave blank if you don't want to change it)</i>
+  	  <%= text_field_tag("name") %>
+
+  	  <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+  	  <%= text_field_tag("password") %>
+
+      <%= f.label :prestige %><i>If you are here to prestige enter true into this field and submit the form.</i>
+      <%= text_field_tag("prestige") %>
+
+  	  <%= f.submit "Update User", class: "btn btn-main" %>
+  	<% end %>
+  </div>
+</div>

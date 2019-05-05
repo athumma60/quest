@@ -1,0 +1,48 @@
+<!-- Creates a form for showing and taking the quiz -->
+<% provide(:title, 'Quiz') %>
+<h1>You are taking the <%= @quiz.name %> quiz.</h1>
+<h2>Your answer must exactly match the one you wish to pick</h2>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @quiz, html:{ method: :put} do |f| %>
+      <b><%= @quiz.question1 %></b><br>
+       1. <%= @quiz.answer1 %><br>
+       2. <%= @quiz.distract11 %><br>
+       3. <%= @quiz.distract12 %><br>
+       4. <%= @quiz.distract13 %><br>
+      <%= text_field_tag("input1") %><hr>
+
+      <b><%= @quiz.question2 %></b><br>
+       1. <%= @quiz.answer2 %><br>
+       2. <%= @quiz.distract21 %><br>
+       3. <%= @quiz.distract22 %><br>
+       4. <%= @quiz.distract23 %><br>
+      <%= text_field_tag("input2") %><hr>
+
+      <b><%= @quiz.question3 %></b><br>
+       1. <%= @quiz.answer3 %><br>
+       2. <%= @quiz.distract31 %><br>
+       3. <%= @quiz.distract32 %><br>
+       4. <%= @quiz.distract33 %><br>
+      <%= text_field_tag("input3") %><hr>
+
+      <b><%= @quiz.question4 %></b><br>
+       1. <%= @quiz.answer4 %><br>
+       2. <%= @quiz.distract41 %><br>
+       3. <%= @quiz.distract42 %><br>
+       4. <%= @quiz.distract43 %><br>
+      <%= text_field_tag("input4") %><hr>
+
+      <b><%= @quiz.question5 %></b><br>
+       1. <%= @quiz.answer5 %><br>
+       2. <%= @quiz.distract51 %><br>
+       3. <%= @quiz.distract52 %><br>
+       4. <%= @quiz.distract53 %><br>
+      <%= text_field_tag("input5") %>
+
+      <%= f.submit "Submit", class: "btn btn-main" %>
+    <% end %>
+</div>
+</div>
+

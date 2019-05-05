@@ -1,0 +1,33 @@
+<!-- Creates a form that allows a user to log in to the website -->
+<% provide(:title, 'Log In') %>
+<h3>Log In</h3>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+   
+
+    <% if devise_mapping.rememberable? -%>                  
+        <h2>Remember Me?</h2>
+        <%= f.check_box :remember_me %>
+    <% end -%>
+
+      <%= f.submit "Log in", class: "btn btn-main" %>
+
+  <% end %>
+
+  </div>
+</div>
+<br />
+<div class="row">
+   <div class="col-md-6 col-md-offset-3">
+    <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-main btn-block" %><br />
+
+    <%= link_to "Forgot your password?", new_password_path(resource_name), class: "btn btn-main btn-block" %>
+   </div>
+  </div>
